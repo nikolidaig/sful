@@ -1,0 +1,80 @@
+* Import memory management library
+'./lib/mem.sful
+
+* Multiply cell by parameter
+@×{
+    &{                  * Store original cell column
+        2C              * Claim 2 columns of memory
+        $c              * Move to original cell
+        !{ 2m $= }      * Copy value to memory col 1 (iterations left)
+        [ - > 2$+ < ]   * Repeat addition in col 2 (running total)
+        > !{ 2$c $= }   * Replace original cell with result
+        2R              * Release memory
+    }
+}
+
+
+* Square cell
+@²{ !× }
+
+
+* Raise cell by parameter exponent
+@`{ &{                  * Store original cell column
+    2C > + <            * Claim 2 columns of memory, add 1 to col 2 (running total)
+    2$+ [ -             * Copy exponent to col 1 (iterations left)
+        $c!{            * Move to original cell
+            2m > $× 2m  * Multiply running total by original cell
+        }
+    ]
+    > !{ 2$c $= }       * Replace original cell with result
+    2R                  * Release memory, move to original cell
+} }
+
+
+* Divide cell by parameter
+@÷{ &{
+    3C $c!{ 3m $= } > 2$= < * Claim 3 cols, copy cell and parameter to cols 1 and 2
+    [ - > -                 * Repeat subtraction on cell and parameter copies
+        ( 2$= > + < )       * If parameter copy reaches zero, add to quotient and reset
+        <                   * Move back to cell copy
+    ]
+    3m 2> !{ 2$c $= }       * Copy result to original cell
+    3R                      * If parameter copy is zero, then cell was smaller or equal
+} }
+
+
+* Modulo cell by parameter
+@\{ &{
+    3C $c!{ 3m $= } > 2$= < * Claim 3 cols, copy cell and parameter to cols 1 and 2
+    [ - > -                 * Repeat subtraction on cell and parameter copies
+        ( 2$= > + < )       * If parameter copy reaches zero, add to quotient and reset
+        <                   * Move back to cell copy
+    ]
+    3m > !{ 2$c 3$= $- }    * Copy result to original cell
+    3R                      * If parameter copy is zero, then cell was smaller or equal
+} }
+
+
+* Set cell to min(cell, parameter)
+@¯{ &{
+    2C $c!{ 2m $= }         * Claim 2 columns of memory, copy cell to col 1
+    > 2$= <                 * Copy parameter to col 2
+    { [ - (q) > - (q) < ] } * Repeat subtraction until one col is 0
+    2m >                    * Return to col 2
+    ( $c 2$= )              * If this cell is zero, then the parameter cell was smaller or equal
+    2R                      * Release memory, move to original cell
+} }
+
+
+* Set cell to max(cell, parameter)
+@_{ &{
+    2C $c!{ 2m $= }         * Claim 2 columns of memory, copy cell to col 1
+    > 2$= <                 * Copy parameter to col 2
+    { [ - (q) > - (q) < ] } * Repeat subtraction until one col is 0
+    2m                      * Return to col 1
+    ( $c 2$= )              * If this cell is zero, then the parameter cell was smaller or equal
+    2R                      * Release memory, move to original cell
+} }
+
+
+10s 5× #n ~

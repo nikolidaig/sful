@@ -1,0 +1,53 @@
+*   Memory Management Model
+*   Each row starts with 3 columns: [ O C D ... ]
+*   (O) stores at least 1 if any data is in the row (is it occupied)
+*   (C) stores the highest column claimed in that row (0-indexed)
+*   (D) stores the data at that row
+*   It is a procedure's job to
+*       * Determine how many columns it will occupy while running, the size (S),   
+*       * Only modify the columns (C) through (C+S),
+*       * Incremement (C) by (S) amount before running,
+*       * Clear all data stored while running
+*       * Decrement (C) by (S) after finishing
+*   Defined procedures to aid in this are below:
+
+
+* Set up current row by setting (O) to 1 and (C) to 3, 
+* Then move to (D) and set it to parameter
+* THIS SETS (D) TO 1 BY DEFAULT
+@s{
+    0c 1= > 3= > $=
+}
+
+
+* Move to first claimed column of the last claim in a row
+* Takes parameter size of last claim
+@m{
+    1c !> $< <
+}
+
+
+* Move to data column
+@d{
+    2c
+}
+
+
+* Claim parameter number of columns,
+* Then move to the first claimed column
+@C{
+    1c $+        * Add to column count
+    $m          * Move to first claimed column
+}
+
+
+* Release parameter number of columns
+@R{ &{
+    2$m             * Move to first claimed column
+    2$=             * Set up counter
+    [ - !{          * Begin looping over claim
+        $> 0= $<    * Erase memory
+    } ]
+    1c 2$-          * Decrement (S)
+    $c              * Move to original column
+} }
