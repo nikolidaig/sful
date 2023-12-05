@@ -16,12 +16,12 @@ class Environment:
     """
 
     def __init__(
-        self, memory: dict[str, int] = dict(), row=0, col=0, procedures=dict()
+        self, memory: dict[str, int] = None, row=0, col=0, procedures=None
     ):
-        self.memory = memory
+        self.memory = memory or dict()
         self.row = row
         self.col = col
-        self.procedures = procedures
+        self.procedures = procedures or dict()
 
     def get(self):
         """Returns the value at the current pointer, or 0 if it doesn't exist."""

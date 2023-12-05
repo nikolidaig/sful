@@ -10,13 +10,13 @@ class Interpreter:
         file,
         line=0,
         index=0,
-        env: Environment = Environment(),
+        env: Environment = None,
         proc_params=[],
     ):
         self.code = code.split("\n")
         self.file = file
 
-        self.env = env
+        self.env = env or Environment()
 
         self.line = line
         self.index = index
