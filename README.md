@@ -67,7 +67,6 @@ The parameter commands set the parameter for the following command.
     [       Continue if cell value is greater than zero, jump forward to ] if zero
     ]       Jump back to [ if cell value greater than zero, continue if zero
     (       Continue if cell value is zero, jump forward to ) if greater
-    )       Jump back to ( if cell value is zero, continue if greater
 
 Procedures are strings of code that can be run at a later time. For example, if a procedure `@a{+}` is defined, then each time `a` is called thereafter, the then selected cell will be incremented. A procedure can take a parameter and use it within the code using the `$` parameter command. For example, the procedure `@a{$+}` can be used with a parameter to increment a cell by a value: `6a` will then be equivalent to `6+`. The default parameter for all defined procedures is 1. Defining a procedure whose symbol is a built-in command already will not change the function of the command, doing nothing.
 

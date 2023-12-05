@@ -13,15 +13,8 @@ class FlowCommands:
         if env.get() > 0:
             interpreter.line, interpreter.index = interpreter.match_delim(")")
 
-    def CloseParen(interpreter, env):
-        if env.get() == 0:
-            interpreter.line, interpreter.index = interpreter.match_delim(
-                "(", forward=False
-            )
-
 flow_commands = {
     "[": FlowCommands.OpenSquareBracket,
     "]": FlowCommands.CloseSquareBracket,
     "(": FlowCommands.OpenParen,
-    ")": FlowCommands.CloseParen,
 }
