@@ -1,12 +1,12 @@
 class ParamCommands:
     def Column(interpreter, env):
-        interpreter.param = env.mem.col
+        interpreter.param = env.col
 
     def Row(interpreter, env):
-        interpreter.param = env.mem.row
+        interpreter.param = env.row
 
     def Cell(interpreter, env):
-        interpreter.param = env.mem.get()
+        interpreter.param = env.get()
 
 
 param_commands = {

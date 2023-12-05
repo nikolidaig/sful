@@ -13,10 +13,10 @@ class PrintingCommands:
         pprint(vars(env))
 
     def Char(interpreter, env):
-        print(chr(env.mem.get()), end="")
+        print(chr(env.get()), end="")
 
     def Number(interpreter, env):
-        print(env.mem.get(), end="")
+        print(env.get(), end="")
 
 
 printing_commands = {

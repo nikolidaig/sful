@@ -1,12 +1,12 @@
 class CellCommands:
     def Inc(interpreter, env):
-        env.mem.inc(interpreter.param)
+        env.inc(interpreter.param)
 
     def Dec(interpreter, env):
-        env.mem.inc(-interpreter.param)
+        env.inc(-interpreter.param)
 
     def Set(interpreter, env):
-        env.mem.set(interpreter.param)
+        env.set(interpreter.param)
 
 
 cell_commands = {

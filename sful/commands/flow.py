@@ -1,26 +1,26 @@
 class FlowCommands:
     def OpenSquareBracket(interpreter, env):
-        if env.mem.get() == 0:
+        if env.get() == 0:
             interpreter.line, interpreter.index = interpreter.match_delim("]")
 
     def CloseSquareBracket(interpreter, env):
-        if env.mem.get() > 0:
+        if env.get() > 0:
             interpreter.line, interpreter.index = interpreter.match_delim(
                 "[", forward=False
             )
 
     def OpenParen(interpreter, env):
-        if env.mem.get() > 0:
+        if env.get() > 0:
             interpreter.line, interpreter.index = interpreter.match_delim(")")
 
     def CloseParen(interpreter, env):
-        if env.mem.get() == 0:
+        if env.get() == 0:
             interpreter.line, interpreter.index = interpreter.match_delim(
                 "(", forward=False
             )
 
     def SetCommand(interpreter, env):
-        env.mem.set(interpreter.param)
+        env.set(interpreter.param)
 
 
 flow_commands = {

@@ -1,5 +1,4 @@
 from sful.environment import Environment
-from sful.memory import Memory
 from sful.commands import commands
 import sful.util as util
 
