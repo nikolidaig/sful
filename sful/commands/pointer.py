@@ -23,6 +23,6 @@ pointer_commands = {
     "^": PointerCommands.Up,
     ">": PointerCommands.Right,
     "<": PointerCommands.Left,
-    "c": PointerCommands.Row,
-    "r": PointerCommands.Col,
+    "r": PointerCommands.Row,
+    "c": PointerCommands.Col,
 }
