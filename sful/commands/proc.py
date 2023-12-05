@@ -6,7 +6,7 @@ class ProcCommands:
         code, line, index = interpreter.delim_code('}')
 
         env.procedures[proc_name] = {
-            "code": code[2:],
+            "code": code[3:-2],
             "file": interpreter.file,
         }
 
