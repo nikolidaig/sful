@@ -46,7 +46,6 @@ class Interpreter:
             commands[command](self, self.env)
 
         elif command in self.env.procedures:
-            print(command)
             sub_int = Interpreter(
                 self.env.procedures[command]["code"],
                 self.env.procedures[command]["file"],
