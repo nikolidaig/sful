@@ -19,14 +19,9 @@ class FlowCommands:
                 "(", forward=False
             )
 
-    def SetCommand(interpreter, env):
-        env.set(interpreter.param)
-
-
 flow_commands = {
     "[": FlowCommands.OpenSquareBracket,
     "]": FlowCommands.CloseSquareBracket,
     "(": FlowCommands.OpenParen,
     ")": FlowCommands.CloseParen,
-    "=": FlowCommands.SetCommand,
 }

@@ -75,6 +75,3 @@
     ( $c 2$= )              * If this cell is zero, then the parameter cell was smaller or equal
     2R                      * Release memory, move to original cell
 } }
-
-
-10s 5× #n ~
