@@ -4,9 +4,10 @@ class ProcCommands:
         proc_name = interpreter.code[interpreter.line][interpreter.index]
         interpreter.advance(1)
         code, line, index = interpreter.delim_code('}')
+        code = code[1:-1]
 
         env.procedures[proc_name] = {
-            "code": code[3:-2],
+            "code": code,
             "file": interpreter.file,
         }
 
@@ -26,7 +27,7 @@ class ProcCommands:
         param_index = len(interpreter.proc_params) - interpreter.param
 
         if param_index < 0:
-            raise Exception("Invalid parameter index.")
+            raise ValueError("Invalid parameter index.")
         
         interpreter.param = interpreter.proc_params[param_index]
 

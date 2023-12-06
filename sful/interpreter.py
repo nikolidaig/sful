@@ -33,7 +33,7 @@ class Interpreter:
         if len(self.code[self.line]) == 0:
             self.advance()
             return
-        
+
         command = self.code[self.line][self.index]
 
         if command in "0123456789":
@@ -84,7 +84,6 @@ class Interpreter:
                 self.line += 1
                 self.index = 0
 
-
     def retreat(self, steps=1):
         """
         Advances the pointer in the interpreter.
@@ -128,8 +127,13 @@ class Interpreter:
         code = ""
 
         for i in range(self.line, line + 1):
-            if i == line + 1:
-                code += self.code[i][:index]
+            if i == self.line:
+                if i == line:
+                    code += self.code[i][self.index : index + 1]
+                else:
+                    code += self.code[i][self.index :]
+            elif i == line:
+                code += self.code[i][self.index : index + 1]
             else:
                 code += self.code[i] + "\n"
 
