@@ -46,13 +46,10 @@ class Interpreter:
             commands[command](self, self.env)
 
         elif command in self.env.procedures:
-            sub_int = Interpreter(
+            self.subrun(
                 self.env.procedures[command]["code"],
                 self.env.procedures[command]["file"],
-                proc_params=[*self.proc_params, self.param],
             )
-
-            sub_int.run()
 
         if command not in "&%!$@":
             self.param = 1
