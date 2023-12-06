@@ -56,7 +56,7 @@ class Interpreter:
             self.subrun(
                 self.env.procedures[command]["code"],
                 self.env.procedures[command]["file"],
-                self.env.procedures[command]["line"]
+                self.env.procedures[command]["line"],
             )
 
         if command not in "&%!$@":
@@ -130,17 +130,17 @@ class Interpreter:
         """
 
         line, index = self.match_delim(match)
-        code = ""
+        code = []
 
         for i in range(self.line, line + 1):
             if i == self.line:
                 if i == line:
-                    code += self.code[i][self.index : index + 1]
+                    code.append(self.code[i][self.index : index + 1])
                 else:
-                    code += self.code[i][self.index :]
+                    code.append(self.code[i][self.index :])
             elif i == line:
-                code += self.code[i][self.index : index + 1]
+                code.append(self.code[i][: index + 1])
             else:
-                code += self.code[i] + "\n"
+                code.append(self.code[i])
 
-        return (code, line, index)
+        return ("\n".join(code), line, index)
