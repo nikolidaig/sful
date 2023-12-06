@@ -9,6 +9,7 @@ class Interpreter:
         code,
         file,
         line=0,
+        start_line=0,
         index=0,
         env: Environment = None,
         proc_params=[],
@@ -19,6 +20,7 @@ class Interpreter:
         self.env = env or Environment()
 
         self.line = line
+        self.start_line = start_line
         self.index = index
         self.param = 1
         self.proc_params = proc_params
@@ -27,7 +29,12 @@ class Interpreter:
 
     def run(self):
         while self.line < len(self.code):
-            self.run_char()
+            try:
+                self.run_char()
+            except Exception as e:
+                raise Exception(
+                    f"Error in {self.file} on line {self.start_line + self.line + 1}:\n{self.code[self.line]}\n{' ' * self.index}^"
+                ) from e
 
     def run_char(self):
         if len(self.code[self.line]) == 0:
@@ -49,6 +56,7 @@ class Interpreter:
             self.subrun(
                 self.env.procedures[command]["code"],
                 self.env.procedures[command]["file"],
+                self.env.procedures[command]["line"]
             )
 
         if command not in "&%!$@":
@@ -56,11 +64,12 @@ class Interpreter:
 
         self.advance()
 
-    def subrun(self, code, file):
+    def subrun(self, code, file, start_line):
         sub_int = Interpreter(
             code,
             file,
             env=self.env,
+            start_line=start_line,
             proc_params=[*self.proc_params, self.param],
         )
 

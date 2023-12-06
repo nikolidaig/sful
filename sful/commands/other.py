@@ -10,7 +10,7 @@ class OtherCommands:
         
         with open(filename, "r") as f:
             code = f.read()
-            interpreter.subrun(code, filename)
+            interpreter.subrun(code, filename, 1)
 
 
 other_commands = {

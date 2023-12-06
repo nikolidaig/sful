@@ -9,6 +9,7 @@ class ProcCommands:
         env.procedures[proc_name] = {
             "code": code,
             "file": interpreter.file,
+            "line": interpreter.line + 1,
         }
 
         interpreter.line = line
@@ -18,7 +19,7 @@ class ProcCommands:
         code, line, index = interpreter.delim_code('}')
         code = code[1:-1]
 
-        interpreter.subrun(code, interpreter.file)
+        interpreter.subrun(code, interpreter.file, interpreter.start_line + interpreter.line + 1)
 
         interpreter.line = line
         interpreter.index = index
