@@ -51,3 +51,10 @@
     1c 2$-          * Decrement (S)
     $c              * Move to original column
 } }
+
+
+* Empty row, will only work if (C) is correct 
+@D{
+    1c !c                   * Clear (O) and move to last claimed column
+    1= [ &= (q) 0= < 1= ]   * Erase cells until (O) is reached
+}
