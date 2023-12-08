@@ -1,5 +1,6 @@
 from sful.commands.cell import cell_commands
 from sful.commands.flow import flow_commands
+from sful.commands.input import input_commands
 from sful.commands.other import other_commands
 from sful.commands.param import param_commands
 from sful.commands.pointer import pointer_commands
@@ -10,6 +11,7 @@ commands = {}
 command_sets = [
     cell_commands,
     flow_commands,
+    input_commands,
     other_commands,
     param_commands,
     pointer_commands,

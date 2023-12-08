@@ -59,7 +59,7 @@ class Interpreter:
                 self.env.procedures[command]["line"],
             )
 
-        if command not in "&%!$@":
+        if command not in "&%!$@;":
             self.param = 1
 
         self.advance()
