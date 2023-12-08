@@ -36,8 +36,8 @@
 * Claim parameter number of columns,
 * Then move to the first claimed column
 @C{
-    1c $+        * Add to column count
-    $m          * Move to first claimed column
+    1c $+   * Add to column count
+    $m      * Move to first claimed column
 }
 
 
