@@ -53,25 +53,3 @@
     3m > !{ 2$c 3$= $- }    * Copy result to original cell
     3R                      * If parameter copy is zero, then cell was smaller or equal
 } }
-
-
-* Set cell to min(cell, parameter)
-@¯{ &{
-    2C $c!{ 2m $= }         * Claim 2 columns of memory, copy cell to col 1
-    > 2$= <                 * Copy parameter to col 2
-    { [ - (q) > - (q) < ] } * Repeat subtraction until one col is 0
-    2m >                    * Return to col 2
-    ( $c 2$= )              * If this cell is zero, then the parameter cell was smaller or equal
-    2R                      * Release memory, move to original cell
-} }
-
-
-* Set cell to max(cell, parameter)
-@_{ &{
-    2C $c!{ 2m $= }         * Claim 2 columns of memory, copy cell to col 1
-    > 2$= <                 * Copy parameter to col 2
-    { [ - (q) > - (q) < ] } * Repeat subtraction until one col is 0
-    2m                      * Return to col 1
-    ( $c 2$= )              * If this cell is zero, then the parameter cell was smaller or equal
-    2R                      * Release memory, move to original cell
-} }
