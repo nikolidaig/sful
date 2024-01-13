@@ -26,28 +26,28 @@ Commands are run on the data in the selected cell, the pointers, and a parameter
 
 ### Pointer Commands
 
-    >   Increment column pointer by parameter (default 1)
-    <   Decrement column pointer (default 1)
-    v   Increment row pointer (default 1)
-    ^   Decrement row pointer (default 1)
-    c   Set column pointer to parameter (no default)
-    r   Set row pointer to parameter (no default)
+    >   Increment column pointer by parameter 
+    <   Decrement column pointer 
+    v   Increment row pointer 
+    ^   Decrement row pointer 
+    c   Set column pointer to parameter 
+    r   Set row pointer to parameter 
 
 \*Note that the down arrow _increments_ the row pointer.
 
 ### Cell Commands
 
-    +   Increment cell by parameter (default 1)
-    -   Decrement cell by parameter (default 1)
-    =   Set cell to parameter (no default)
+    +   Increment cell by parameter 
+    -   Decrement cell by parameter 
+    =   Set cell to parameter 
 
 ### Printing Commands
 
-    _   Print spaces parameter times (default 1)
-    n   Print newlines parameter times (default 1)
-    ~   Print debug information (no parameter)
-    .   Print cell value as a character (no parameter)
-    #   Print cell value as an integer (no parameter)
+    _   Print spaces parameter times 
+    n   Print newlines parameter times 
+    ~   Print debug information 
+    .   Print cell value as a character 
+    #   Print cell value as an integer 
 
 ### Parameter Commands
 
