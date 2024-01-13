@@ -75,4 +75,4 @@ Procedures are strings of code that can be run at a later time. For example, if 
     a       Runs procedure named a
     q       Quits running procedure
 
-Finally, using the `{}` brackets without `@` starts an anonymous procedure, which is run immediately. Using `$` inside an anonymous procedure and a parameter before the `{` lets you "cast" a parameter accross later commands. For example, to copy a cell's value to the next column over, use `!{>$=}`.
+Using the `{}` brackets without `@` starts an anonymous procedure, which is run immediately. Using `$` inside an anonymous procedure and a parameter before the `{` lets you "cast" a parameter accross later commands. For example, to copy a cell's value to the next column over, use `!{>$=}`. Nested anonymous procedures are allowed, and to use the parameter of a parent procedure, use `2$`, or `3$` for the grandparent, etc.
