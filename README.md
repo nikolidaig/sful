@@ -10,7 +10,6 @@ A somewhat backwards-compatible extension of Brainfuck, written in python. Here'
             [ - > 2$+ < ]   * Repeat addition in col 2 (running total)
             > !{ 2$c $= }   * Replace original cell with result
             2R              * Release memory
-            $c              * Move to original cell
         }
     }
     
